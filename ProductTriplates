@@ -1,0 +1,53 @@
+/******************************************************************************
+
+
+#include <iostream>
+#include <bits/stdc++.h> 
+#include <unordered_map>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+   unordered_map <int, int> map;
+   vector<int> list;
+   
+   int elem, elemCount;
+   
+   cin >> elemCount;
+   for(int i =0 ; i < elemCount; i++ ) {
+       cin >> elem;
+       list.push_back(elem);
+       map.insert({elem, i});
+   }
+   
+   unordered_map <int, int>::iterator itm;
+   for (itm = map.begin(); itm != map.end(); itm++) {
+       cout << "Key: " << itm->first << " Value: " << itm->second << endl;
+   }
+   std:vector<int>::iterator itv;
+   
+   int count = 0;
+   
+   for(itv=list.begin(); itv != list.end(); itv++) {
+       int first, second;
+       first = *itv;
+       
+       vector<int>::iterator itvs;
+       for (itvs = itv+1; itvs != list.end(); itvs++) {
+           
+           int product = first * (*itvs);
+           
+           cout << "Product: " << product << endl;
+           
+           if(map.find(product) != map.end()){
+              count++;
+           } 
+       }
+   }
+   
+   cout << "Case #1: " << count << endl;
+   
+   return 0;
+}
